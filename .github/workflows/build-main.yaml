@@ -36,6 +36,6 @@ jobs:
         pip install -r build-requirements.txt
     - name: Build
       run: |
-        rst-lint
+        rst-lint .
         make html
       working-directory: docs
