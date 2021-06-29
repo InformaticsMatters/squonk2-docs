@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Squonk 2.0 Design Documentation &#8212; Squonk 2.0 2.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Squonk 2.0 User Documentation" href="../user-docs/index.html" />
+    <link rel="prev" title="Welcome to Squonk 2.0 documentation’s documentation!" href="../index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="squonk-2-0-design-documentation">
+<h1>Squonk 2.0 Design Documentation<a class="headerlink" href="#squonk-2-0-design-documentation" title="Permalink to this headline">¶</a></h1>
+<p>This set of documentation describes the philosopy that drove the design of Squonk 2.0
+and the key concepts that are helpful to understand when using Squonk 2.0.</p>
+<section id="what-was-squonk-1-0">
+<h2>What was Squonk 1.0<a class="headerlink" href="#what-was-squonk-1-0" title="Permalink to this headline">¶</a></h2>
+<p>We previously created the <a class="reference external" href="https://squonk.it/">Squonk Computational Notebook</a>, a web based
+workflow took that was targetted and end user scientists. There are many scientific workflow
+tools available, but to our knowledge, all are targetted at programmers, or at least you need
+think like a programmer to use them. Jupyter Notebooks, for instance, are fantastic tools, but
+you need to write Python code to use them, and normal scientists don’t want to have to do that!</p>
+<p>What was needed was a simple to use, but powerful workflow tool, and the Squonk Computational Notebook
+acheived this to a large extent.</p>
+</section>
+<section id="what-is-squonk-2-0">
+<h2>What is Squonk 2.0<a class="headerlink" href="#what-is-squonk-2-0" title="Permalink to this headline">¶</a></h2>
+<p>Squonk 2.0 is a completely new set of products that broadens the scope of the Squonk Computational
+Notebook and addresses one key design flaw that we made, that is to make Squonk 2.0 <em>data centric</em>.
+The Squonk Computational Notebook was workflow centric and it was not so simple to create data in one
+notebook and then use that data in another notebook. Squonk 2.0 changes this completely, with data
+being at the heart of things. The key component is called the <em>Data Manager</em> which rather makes the
+point.</p>
+<p>Squonk 2.0 is in the early stage of development and <strong>not</strong> yet ready for real world use.
+Access is by invitation only. Send an eamil to <a class="reference external" href="mailto:info&#37;&#52;&#48;informaticsmatters&#46;com">info<span>&#64;</span>informaticsmatters<span>&#46;</span>com</a> if you would like to try it
+out.</p>
+<p>The current focus is on virtual screening workflows, and we already have userful functionality for compound
+selection and preparation, protein preparation, docking and rescoring.</p>
+</section>
+<section id="squonk-2-0-infrastructure">
+<h2>Squonk 2.0 Infrastructure<a class="headerlink" href="#squonk-2-0-infrastructure" title="Permalink to this headline">¶</a></h2>
+<p>All the Squonk 2.0 components are designed to be deployed to a Kubernetes (K8S) platform which can be scaled to
+whatever is needed. The expectation is that it will be relatively simple to deploy to individual customer
+environments.</p>
+</section>
+<section id="squonk-2-0-components">
+<h2>Squonk 2.0 Components<a class="headerlink" href="#squonk-2-0-components" title="Permalink to this headline">¶</a></h2>
+<section id="data-manager-api">
+<h3>Data Manager API<a class="headerlink" href="#data-manager-api" title="Permalink to this headline">¶</a></h3>
+<p>The Data Manager is the key component of Squonk 2.0 and provides a REST API for managing <em>datasets</em>,
+including permissions, versioning and comprehensive metadata. Behind the REST API is an event driven
+architecture involving RabbitMQ and Celery.</p>
+<p>The API is compliant with the OpenAPI (aka Swagger) v3 specification and can be examined with the Swagger UI.</p>
+</section>
+<section id="data-manager-ui">
+<h3>Data Manager UI<a class="headerlink" href="#data-manager-ui" title="Permalink to this headline">¶</a></h3>
+<p>This is the web based interface that will be used by end users. It allows to manage data and to execute jobs
+and workflows. It is a React and NextJS based application.</p>
+</section>
+<section id="pose-viewer">
+<h3>Pose Viewer<a class="headerlink" href="#pose-viewer" title="Permalink to this headline">¶</a></h3>
+<p>An application that can be used to view and analyse virtual screening data, including the docked poses and
+the interactions they make with the receptor.</p>
+</section>
+<section id="fragnet-search-api-and-ui">
+<h3>Fragnet Search API and UI<a class="headerlink" href="#fragnet-search-api-and-ui" title="Permalink to this headline">¶</a></h3>
+<p>Searching the fragment network data. This is currently a stand-alone application, but will be integrated into
+the Squonk 2.9 ecosystem. You can find it <a class="reference external" href="https://squonk.it/fragnet-search-ui">here</a>.</p>
+</section>
+</section>
+<section id="squonk-2-0-concepts">
+<h2>Squonk 2.0 Concepts<a class="headerlink" href="#squonk-2-0-concepts" title="Permalink to this headline">¶</a></h2>
+<p>The following concepts will help you understand how Squonk 2.0, and in particular the <em>Data Manager</em>, work.</p>
+<section id="datasets">
+<h3>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">¶</a></h3>
+<p>These are files that the Data Manager manages. The Data Manager is strongly opinionated about these files in
+terms of things like file extensions. Some types of files, such as those containing molecules, are indexed
+so that substructure and similarity searches can be performed, and structures common between datasets can be
+identified. For these indexed files each record is given a unique identifier, allowing records to be traced
+between datasets.</p>
+<p>Datasets can be versioned and ownership and permissions are strongly controlled.</p>
+<p>Datasets have strongly managed metadata, including <em>Annotations</em>, which provide the ability to fully describe
+the dataset and to track its history.</p>
+</section>
+<section id="projects">
+<h3>Projects<a class="headerlink" href="#projects" title="Permalink to this headline">¶</a></h3>
+<p>A project is a place where a user perfoms work, and acts as a collaboration space for multiple users.
+Access to a project can be controlled by its creator or anyone who is made an editor.</p>
+<p>It’s key asset is a filesystem where the project’s files are located. Datasets can be added to a project
+for working with, and project’s files can be added as datasets. That file system is accessible from any
+applications or jobs that are launched. For instance you can launch a Jupyter Notebook and your projects
+contents are immediately accessible.</p>
+</section>
+<section id="applications">
+<h3>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">¶</a></h3>
+<p>Applications can be launched in the context of a project, with the application having access to the project’s
+files. Currently the only type of application that is available is a Jupyter Notebook.</p>
+<p>An application runs as the user’s user ID and the project’s group ID ensuring that access control is properly
+managed.</p>
+</section>
+<section id="jobs">
+<h3>Jobs<a class="headerlink" href="#jobs" title="Permalink to this headline">¶</a></h3>
+<p>A job is a well defined service execution that processes data in a project. Like an application, a job has
+access to the project’s filesystem and and be used to process those files. Jobs can be simple or complex, small
+or big, but executing them is very simple. Jobs needing lot’s of compute power (e.g. docking workflows) are
+parallelised and can scale to very large sizes if run on a suitable K8S cluster. Like applications, jobs run as
+the users user ID  and the project’s group ID ensuring that access control is properly managed.</p>
+<p>Currently jobs are focussed around virtual screening workflows, but this will be expanded over time.
+It is expected that the majority of services from the Squonk Computational Notebook will be ported over to
+Squonk 2.0 jobs.</p>
+</section>
+<section id="workflows">
+<h3>Workflows<a class="headerlink" href="#workflows" title="Permalink to this headline">¶</a></h3>
+<p>Workflows are not yet implemented, but will be a key component of Squonk 2.0. The will allow jobs to be combined
+into a bigger workflow in a manner similar to the Squonk Computational Notebook.</p>
+</section>
+<section id="tasks">
+<h3>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h3>
+<p>When an application or job is created a task is created to track that execution. That task allows you to manage
+the application or job, and see the events e.g. track the progress, look for any errors, view the reports or
+logs.</p>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Squonk 2.0</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Squonk 2.0 Design Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-was-squonk-1-0">What was Squonk 1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-squonk-2-0">What is Squonk 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#squonk-2-0-infrastructure">Squonk 2.0 Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#squonk-2-0-components">Squonk 2.0 Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#squonk-2-0-concepts">Squonk 2.0 Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../user-docs/index.html">Squonk 2.0 User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-docs/index.html">Squonk 2.0 Developer Documentation</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../index.html" title="previous chapter">Welcome to Squonk 2.0 documentation’s documentation!</a></li>
+      <li>Next: <a href="../user-docs/index.html" title="next chapter">Squonk 2.0 User Documentation</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Tim Dudgeon, Alan christie, Duncan Peacock, Oliver Dudgeon.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/design-docs/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
