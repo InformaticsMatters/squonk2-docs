@@ -1,4 +1,7 @@
 # Squonk 2 Documentation
+
+[![build main](https://github.com/InformaticsMatters/squonk2-docs/actions/workflows/build-main.yaml/badge.svg)](https://github.com/InformaticsMatters/squonk2-docs/actions/workflows/build-main.yaml)
+
 The [Sphinx]-based Squonk 2 documentation.
 
 Building the documentation, from a suitably equipped virtual environment: -
