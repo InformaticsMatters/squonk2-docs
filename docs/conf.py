@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Squonk 2.0'
+project = 'Squonk 2'
 copyright = '2021, Tim Dudgeon, Alan christie, Duncan Peacock, Oliver Dudgeon'
 author = 'Tim Dudgeon, Alan christie, Duncan Peacock, Oliver Dudgeon'
 
