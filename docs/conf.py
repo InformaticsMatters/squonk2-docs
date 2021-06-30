@@ -20,8 +20,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Squonk 2'
-copyright = '2021, Tim Dudgeon, Alan christie, Duncan Peacock, Oliver Dudgeon'
-author = 'Tim Dudgeon, Alan christie, Duncan Peacock, Oliver Dudgeon'
+copyright = '2021, Tim Dudgeon, Alan Christie, Duncan Peacock, Oliver Dudgeon'
+author = 'Tim Dudgeon, Alan Christie, Duncan Peacock, Oliver Dudgeon'
 
 # The short X.Y version
 version = ''
@@ -101,7 +101,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Squonk20documentationdoc'
+htmlhelp_basename = 'Squonk2documentationdoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -128,8 +128,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'Squonk20documentation.tex', 'Squonk 2.0 documentation Documentation',
-     'Tim Dudgeon, Alan christie, Duncan Peacock, Oliver Dudgeon', 'manual'),
+    (master_doc, 'Squonk2documentation.tex', 'Squonk 2 documentation Documentation',
+     'Tim Dudgeon, Alan Christie, Duncan Peacock, Oliver Dudgeon', 'manual'),
 ]
 
 
@@ -138,7 +138,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'squonk20documentation', 'Squonk 2.0 documentation Documentation',
+    (master_doc, 'squonk2documentation', 'Squonk 2 documentation Documentation',
      [author], 1)
 ]
 
@@ -149,8 +149,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'Squonk20documentation', 'Squonk 2.0 documentation Documentation',
-     author, 'Squonk20documentation', 'One line description of project.',
+    (master_doc, 'Squonk2documentation', 'Squonk 2 documentation Documentation',
+     author, 'Squonk2documentation', 'One line description of project.',
      'Miscellaneous'),
 ]
 
